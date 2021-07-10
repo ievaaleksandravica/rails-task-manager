@@ -1,0 +1,20 @@
+<h1>Please update your task</h1>
+<div>
+<%= form_for(@task) do |f| %>
+  <div>
+      <%= f.label :title, "What's your new task?" %>
+      <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :details, "Please describe this task." %>
+    <%= f.text_area :details %>
+  </div>
+    <div>
+    <%= f.label :completed, "Completed." %>
+    <%= f.check_box :completed %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+</div>
