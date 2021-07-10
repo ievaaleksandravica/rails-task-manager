@@ -1,7 +1,19 @@
-<h1>My tasks</h1>
+<h1 class="pb-3 mb-3 border-bottom">My tasks</h1>
 
 <% @tasks.each do |task| %>
-    <p> <%= task.completed %> | <b> <%= link_to task.title, task_path(task) %> </b> <%= link_to 'Delete', destroy_path(task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } %></p>
+    <p>
+      <% if task.completed == true  %>
+        <i class="far fa-check-circle text-success" ></i>
+      <% else  %>
+        <i class="far fa-check-circle text-warning" ></i>
+      <% end  %>
+     | <b>
+          <span class="text-secondary"> <%= link_to task.title, task_path(task), class: "text-secondary" %>
+          </span>
+        </b> <%= link_to destroy_path(task), method: :delete, data: { confirm: 'Are you sure you want to delete this task?' } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+   </p>
 <% end %>
 
 <%= link_to 'Create new task', tasks_new_path%>
